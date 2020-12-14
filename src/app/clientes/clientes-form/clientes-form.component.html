@@ -1,0 +1,79 @@
+<h1 class="mt-4">Clientes</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{param ? 'Edição' : 'Cadastro'}}</li>
+</ol>
+<div class="container">
+    <form *ngIf="!param; else formAtt" [formGroup]="formulario" (ngSubmit)="cadastrar()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Nome:</label>
+                    <input type="text" class="form-control" maxlength="150" formControlName="nome" placeholder="Digite o nome">
+                    <div *ngIf="!formulario.get('nome').valid && formulario.get('nome').touched" class="form-text text-danger">Nome inválido</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>CPF:</label>
+                    <input type="text" class="form-control" maxlength="11" formControlName="cpf" placeholder="Digite somente os números">
+                    <div *ngIf="!formulario.get('cpf').valid && formulario.get('cpf').touched" class="form-text text-danger">CPF inválido</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success" [disabled]="formulario.invalid">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+                <button type="button" class="btn btn-warning ml-1" routerLink="/clientes-lista">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+                </button>
+            </div>          
+        </div>
+    </form>
+    <ng-template #formAtt>
+        <form [formGroup]="formulario" (ngSubmit)="atualizar()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>ID:</label>
+                        <input type="text" readonly class="form-control" formControlName="id">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Data de Cadastro:</label>
+                        <input type="text" readonly class="form-control" formControlName="dataCadastro" >                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nome:</label>
+                        <input type="text" class="form-control" maxlength="150" formControlName="nome" placeholder="Digite o nome">
+                        <div *ngIf="!formulario.get('nome').valid && formulario.get('nome').touched" class="form-text text-danger">Nome inválido</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>CPF:</label>
+                        <input type="text" class="form-control" maxlength="11" formControlName="cpf" placeholder="Digite somente os números">
+                        <div *ngIf="!formulario.get('cpf').valid && formulario.get('cpf').touched" class="form-text text-danger">CPF inválido</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">
+                        <i class="fa fa-sync"></i> Atualizar
+                    </button>
+                    <button type="button" class="btn btn-warning ml-1" routerLink="/clientes-lista">
+                        <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+                    </button>
+                </div>          
+            </div>
+        </form>
+    </ng-template>
+    
+</div>
