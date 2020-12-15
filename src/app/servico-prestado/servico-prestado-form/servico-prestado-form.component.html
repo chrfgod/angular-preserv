@@ -1,0 +1,67 @@
+<h1 class="mt-4">Serviço Prestado</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Novo</li>
+</ol>
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="cadastrar()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>
+                        Cliente: 
+                    </label>
+                    <select class="form-control" formControlName="idCliente">
+                        <div *ngIf="!formulario.get('idCliente').valid && formulario.get('idCliente').touched" class="form-text text-danger">Opção inválida</div>
+                        <option value="">
+                            Selecione
+                        </option>
+                        <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+                            {{ cliente.nome }}
+                        </option>
+                    </select>
+                </div>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>
+                        Descrição                            
+                    </label>
+                    <input class="form-control" type="text" formControlName="descricao">
+                    <div *ngIf="!formulario.get('descricao').valid && formulario.get('descricao').touched" class="form-text text-danger">Descrição inválida</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        Data                           
+                    </label>
+                    <input class="form-control" type="text" formControlName="data">
+                    <div *ngIf="!formulario.get('data').valid && formulario.get('data').touched" class="form-text text-danger">Data inválida</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        Preço do Serviço                            
+                    </label>
+                    <input class="form-control" type="text" formControlName="preco">
+                    <div *ngIf="!formulario.get('preco').valid && formulario.get('preco').touched" class="form-text text-danger">Preço inválido</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i>
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
