@@ -43,8 +43,6 @@
                     <div *ngIf="!formulario.get('data').valid && formulario.get('data').touched" class="form-text text-danger">Data inválida</div>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>
@@ -54,12 +52,16 @@
                     <div *ngIf="!formulario.get('preco').valid && formulario.get('preco').touched" class="form-text text-danger">Preço inválido</div>
                 </div>
             </div>
-        </div>
+        </div>      
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" [disabled]="formulario.invalid">
                     <i class="fa fa-save"></i>
                     Salvar
+                </button>
+                <button type="button" class="btn btn-warning ml-1" routerLink="/servico-prestado-lista">
+                    <i class="fa fa-arrow-alt-circle-left"></i>
+                    Voltar
                 </button>
             </div>
         </div>

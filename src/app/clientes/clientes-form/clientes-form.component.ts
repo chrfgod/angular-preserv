@@ -64,7 +64,6 @@ export class ClientesFormComponent implements OnInit {
     this.clienteService.cadastrar(cliente)
       .subscribe(
         response => {
-          console.log(response);
           this.toastr.success('Cliente cadastrado com sucesso');
           this.router.navigate(['/clientes-lista']);
         },
@@ -84,7 +83,6 @@ export class ClientesFormComponent implements OnInit {
     this.clienteService.atualizar(cliente)
       .subscribe(
         response => {
-          console.log(response);
           this.toastr.success('Cliente atualizado com sucesso');
           this.router.navigate(['/clientes-lista']);
         },

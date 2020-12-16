@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ClientesService } from 'src/app/clientes.service';
 import { Cliente } from 'src/app/clientes/cliente.model';
 import { ServicoPrestadoService } from 'src/app/servico-prestado.service';
@@ -23,6 +24,7 @@ export class ServicoPrestadoFormComponent implements OnInit {
 
   constructor(
     private clienteService: ClientesService,
+    private toastr: ToastrService,
     private servicoService: ServicoPrestadoService
   ) {
    }
@@ -47,6 +49,10 @@ export class ServicoPrestadoFormComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.toastr.success('Serviço cadastrado com sucesso');
+        },
+        err => {
+          this.toastr.error(err.error.errors);
         }
       )
   }
