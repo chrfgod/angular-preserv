@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClientesService } from 'src/app/clientes.service';
 import { Cliente } from 'src/app/clientes/cliente.model';
@@ -25,7 +26,8 @@ export class ServicoPrestadoFormComponent implements OnInit {
   constructor(
     private clienteService: ClientesService,
     private toastr: ToastrService,
-    private servicoService: ServicoPrestadoService
+    private servicoService: ServicoPrestadoService,
+    private router: Router
   ) {
    }
 
@@ -50,6 +52,7 @@ export class ServicoPrestadoFormComponent implements OnInit {
         response => {
           console.log(response);
           this.toastr.success('Serviço cadastrado com sucesso');
+          this.router.navigate(['/servico-prestado/lista'])
         },
         err => {
           this.toastr.error(err.error.errors);

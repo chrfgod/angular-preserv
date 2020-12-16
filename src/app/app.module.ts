@@ -13,12 +13,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ServicoPrestadoService } from './servico-prestado.service';
 import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import { LoginComponent } from './login/login.component';
     ClientesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    ServicoPrestadoModule
+    ServicoPrestadoModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ClientesService,

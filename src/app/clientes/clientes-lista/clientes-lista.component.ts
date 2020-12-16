@@ -30,11 +30,11 @@ export class ClientesListaComponent implements OnInit {
   }
 
   novoCadastro(){
-    this.router.navigate(['/clientes-form']);
+    this.router.navigate(['/clientes/form']);
   }
 
   atualizar(id: number){
-    this.router.navigate([`/clientes-form/${id}`]);
+    this.router.navigate([`/clientes/form/${id}`]);
   }
 
   preparaDelecao(cliente: Cliente){

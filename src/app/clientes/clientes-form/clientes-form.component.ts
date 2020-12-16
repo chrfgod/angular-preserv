@@ -65,7 +65,7 @@ export class ClientesFormComponent implements OnInit {
       .subscribe(
         response => {
           this.toastr.success('Cliente cadastrado com sucesso');
-          this.router.navigate(['/clientes-lista']);
+          this.router.navigate(['/clientes/lista']);
         },
         err => {
           this.toastr.error(err.error.errors);
@@ -84,7 +84,7 @@ export class ClientesFormComponent implements OnInit {
       .subscribe(
         response => {
           this.toastr.success('Cliente atualizado com sucesso');
-          this.router.navigate(['/clientes-lista']);
+          this.router.navigate(['/clientes/lista']);
         },
         err => {
           this.toastr.error(err.error.errors);
