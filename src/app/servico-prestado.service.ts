@@ -17,12 +17,22 @@ export class ServicoPrestadoService {
   ) { }
 
   salvar(servicoPrestado: ServicoPrestado): Observable<ServicoPrestado>{
-    return this.http.post<ServicoPrestado>(this.apiURL, servicoPrestado);
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString);
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.post<ServicoPrestado>(this.apiURL, servicoPrestado, {headers} );
   }
 
   buscar(nome: string, mes: number): Observable<ServicoPrestadoBusca[]>{
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString);
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
     const httpParams = new HttpParams().set("nome", nome).set("mes", mes ? mes.toString() : '');
     const url = this.apiURL + "?" + httpParams.toString();
-    return this.http.get<ServicoPrestadoBusca[]>(url);
+    return this.http.get<ServicoPrestadoBusca[]>(url, {headers});
   }
 }

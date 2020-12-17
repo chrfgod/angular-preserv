@@ -17,23 +17,48 @@ export class ClientesService {
   ) { }
 
   cadastrar(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(`${this.apiURL}`, cliente)
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString);
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.post<Cliente>(`${this.apiURL}`, cliente, {headers})
   }
 
   getClientes(): Observable<Cliente[]>{
-    return this.http.get<Cliente[]>(`${this.apiURL}`);
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString);
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.get<Cliente[]>(this.apiURL, {headers});
   }
 
   getClienteById(id: number): Observable<Cliente> {
-    return this.http.get<any>(`${this.apiURL}/${id}`);
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString);
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.get<any>(`${this.apiURL}/${id}`, {headers});
   }
 
   atualizar(cliente: Cliente): Observable<any> {
-    return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}`, cliente)
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString);
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}`, cliente, {headers})
   }
 
   deletar(cliente: Cliente): Observable<any> {
-    return this.http.delete<Cliente>(`${this.apiURL}/${cliente.id}`)
+    const tokenString = localStorage.getItem('access_token');
+    const token = JSON.parse(tokenString);
+    const headers = {
+      'Authorization' : 'Bearer ' + token.access_token
+    }
+    return this.http.delete<Cliente>(`${this.apiURL}/${cliente.id}`, {headers})
   }
   
 

@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiURLBase: 'http://localhost:8080'
+  apiURLBase: 'http://localhost:8080',
+  clienteId: 'preserv-app',
+  clienteSecret: '@admin10',
+  obterTokenUrl: '/oauth/token'
 };
 
 /*

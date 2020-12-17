@@ -7,7 +7,7 @@ import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
 import { ClientesModule } from './clientes/clientes.module';
 import { ClientesService } from './clientes.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
@@ -15,6 +15,8 @@ import { ServicoPrestadoService } from './servico-prestado.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
+import { AuthService } from './auth.service';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { LayoutComponent } from './layout/layout.component';
   ],
   providers: [
     ClientesService,
-    ServicoPrestadoService
+    ServicoPrestadoService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
